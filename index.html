@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雛ハーモニー人形の館</title>
+<script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Noto Serif JP', serif;
+            background-color: #f9f5f0;
+            color: #333;
+        }
+        
+        .hero-bg {
+            background: radial-gradient(circle, rgba(249,245,240,0.8) 0%, rgba(212,165,116,0.2) 100%);
+        }
+        
+        .vanta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        .doll-shadow {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .text-vertical {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.03);
+        }
+        
+        .hover-rotate:hover {
+            transform: rotate(-2deg);
+        }
+        
+        .sakura-bg {
+            background-image: url('images/frame_297_f373bc.jpg');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .doll-card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .doll-card:hover {
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #d4a574, #b8935a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .text-vertical {
+                writing-mode: horizontal-tb;
+            }
+            
+            .mobile-stack {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Vanta.js Background -->
+    <div id="vanta-bg" class="vanta-bg"></div>
+    
+    <!-- Header -->
+    <header class="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="images/frame_70_2bf30b.png" alt="雛ハーモニーロゴ" class="h-12 w-12 rounded-full object-cover mr-3">
+<h1 class="text-2xl font-bold gradient-text">雛ハーモニー</h1>
+</div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-700 hover:text-amber-700 transition-all font-medium">ホーム</a>
+                <a href="#dolls" class="text-gray-700 hover:text-amber-700 transition-all font-medium">人形</a>
+                <a href="#about" class="text-gray-700 hover:text-amber-700 transition-all font-medium">私たちについて</a>
+                <a href="#gallery" class="text-gray-700 hover:text-amber-700 transition-all font-medium">ギャラリー</a>
+                <a href="#contact" class="text-gray-700 hover:text-amber-700 transition-all font-medium">お問い合わせ</a>
+</nav>
+            
+            <button class="md:hidden text-gray-700">
+                <i data-feather="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 hero-bg relative overflow-hidden">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0 relative">
+                <div class="absolute -left-10 -top-10 w-32 h-32 bg-amber-100 rounded-full opacity-50"></div>
+                <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-amber-100 rounded-full opacity-30"></div>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 gradient-text">日本の伝統人形</h1>
+                <p class="text-lg md:text-xl text-gray-600 mb-8">愛情と伝統を込めて手作りされた雛人形と五月人形で、日本文化をお家にお届けします</p>
+<div class="flex space-x-4">
+                    <a href="#dolls" class="px-8 py-3 bg-amber-700 hover:bg-amber-800 text-white rounded-full font-medium transition-all flex items-center">
+                        <i data-feather="shopping-bag" class="mr-2"></i> コレクションを見る
+                    </a>
+                    <a href="#about" class="px-8 py-3 border border-amber-700 text-amber-700 hover:bg-amber-50 rounded-full font-medium transition-all">
+                        私たちの物語
+                    </a>
+</div>
+                
+                <div class="mt-12 flex items-center space-x-4">
+                    <div class="flex -space-x-2">
+                        <img src="images/frame_70_097bb9.png" class="w-10 h-10 rounded-full border-2 border-white">
+                        <img src="images/frame_70_0add14.png" class="w-10 h-10 rounded-full border-2 border-white">
+                        <img src="images/frame_70_4d7987.png" class="w-10 h-10 rounded-full border-2 border-white">
+                    </div>
+                    <div>
+                        <div class="flex items-center">
+                            <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                            <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                            <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                            <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                            <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-sm text-gray-500">200人以上のコレクターから5.0の評価</p>
+</div>
+                </div>
+            </div>
+            
+            <div class="md:w-1/2 relative floating">
+                <div class="absolute -left-20 -top-20 w-64 h-64 bg-amber-100 rounded-full opacity-20"></div>
+                <div class="relative doll-shadow rounded-2xl overflow-hidden hover-scale transition-all">
+                    <img src="images/frame_66_758b6d.jpg" alt="伝統的な雛人形" class="w-full h-auto rounded-2xl">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                        <h3 class="text-white text-xl font-bold">雛祭りコレクション</h3>
+                        <p class="text-amber-200">女の子の健やかな成長を祝う</p>
+</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Dolls -->
+    <section id="dolls" class="py-20 sakura-bg">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-amber-700 font-medium mb-2 inline-block">伝統工芸</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">手作りの人形</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">各人形は代々受け継がれた技術を持つ職人によって丹精込めて作られています</p>
+</div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Doll 1 -->
+                <div class="doll-card bg-white rounded-2xl overflow-hidden hover-rotate">
+                    <div class="relative overflow-hidden h-64">
+                    <img src="images/frame_87_075f4c.png" alt="雛人形セット" class="w-full h-full object-cover transition-all hover:scale-105">
+<div class="absolute top-4 right-4 bg-amber-700 text-white px-3 py-1 rounded-full text-xs font-medium">
+                            おすすめ
+                        </div>
+</div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">御殿飾り雛人形セット</h3>
+                            <span class="text-amber-700 font-bold">¥49,800</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">天皇と皇后のお人形を含む7段飾りの完全セット</p>
+<div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                                <span class="text-sm ml-1">4.9 (28)</span>
+                            </div>
+                                <button class="text-amber-700 hover:text-amber-900 transition-all flex items-center">
+                                    <i data-feather="shopping-cart" class="w-4 h-4 mr-1"></i>
+                                    カートに入れる
+                                </button>
+</div>
+                    </div>
+                </div>
+                
+                <!-- Doll 2 -->
+                <div class="doll-card bg-white rounded-2xl overflow-hidden hover-rotate">
+                    <div class="relative overflow-hidden h-64">
+                    <img src="images/frame_89_83e3e8.png" alt="武者人形" class="w-full h-full object-cover transition-all hover:scale-105">
+</div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">武者兜飾り</h3>
+                            <span class="text-amber-700 font-bold">¥32,400</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">端午の節句を祝う伝統的な武者兜</p>
+<div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                                <span class="text-sm ml-1">4.8 (15)</span>
+                            </div>
+                            <button class="text-amber-700 hover:text-amber-900 transition-all flex items-center">
+                                <i data-feather="shopping-cart" class="w-4 h-4 mr-1"></i>
+                                Add to cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Doll 3 -->
+                <div class="doll-card bg-white rounded-2xl overflow-hidden hover-rotate">
+                    <div class="relative overflow-hidden h-64">
+                    <img src="images/frame_86_ceb0db.png" alt="五人囃子人形" class="w-full h-full object-cover transition-all hover:scale-105">
+<div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+                            限定品
+                        </div>
+</div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">五人囃子セット</h3>
+                            <span class="text-amber-700 font-bold">¥38,900</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">精巧に作られた3体の五人囃子人形セット</p>
+<div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                                <span class="text-sm ml-1">5.0 (12)</span>
+                            </div>
+                            <button class="text-amber-700 hover:text-amber-900 transition-all flex items-center">
+                                <i data-feather="shopping-cart" class="w-4 h-4 mr-1"></i>
+                                Add to cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block px-8 py-3 border border-amber-700 text-amber-700 hover:bg-amber-50 rounded-full font-medium transition-all">
+                    すべてのコレクションを見る
+                </a>
+</div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-amber-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0 md:pr-12">
+                    <span class="text-amber-700 font-medium mb-2 inline-block">私たちの伝統</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">1952年からの伝統工芸</h2>
+                    <p class="text-gray-600 mb-6">埼玉県岩槻の人形作り地区で創業した雛ハーモニーは、三代にわたって日本の人形作りの伝統を守りながら革新を続けてきました。</p>
+                    <p class="text-gray-600 mb-8">各人形は何世紀にもわたって完成された技術を用いて手作りされ、伝統的な美観と現代的な感性を融合させています。</p>
+<div class="grid grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-xl shadow-sm">
+                            <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mb-4">
+                                <i data-feather="award" class="text-amber-700 w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-800 mb-2">職人の技</h3>
+                            <p class="text-sm text-gray-600">日本伝統工芸士協会認定</p>
+</div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm">
+                            <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mb-4">
+                                <i data-feather="feather" class="text-amber-700 w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-800 mb-2">天然素材</h3>
+                            <p class="text-sm text-gray-600">最高級の絹、木、和紙のみを使用</p>
+</div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 relative">
+                    <div class="relative doll-shadow rounded-2xl overflow-hidden">
+                    <img src="images/frame_90_08b480.png" alt="職人の仕事風景" class="w-full h-auto rounded-2xl">
+<div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg w-3/4">
+                            <div class="flex items-center">
+                                <img src="images/frame_70_e022a8.png" alt="主任職人" class="w-12 h-12 rounded-full border-2 border-white shadow-sm mr-4">
+<div>
+                                    <h4 class="font-bold text-gray-800">Yamada-san</h4>
+                                    <p class="text-sm text-gray-600">Head Artisan since 1998</p>
+                                </div>
+                            </div>
+                            <p class="mt-3 text-sm italic text-gray-600">"Each doll carries the spirit of Japanese tradition and the hopes for children's happiness."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-amber-700 font-medium mb-2 inline-block">ビジュアルジャーニー</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">人形ギャラリー</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">これらの画像で私たちのコレクションの美しさと職人技をご覧ください</p>
+</div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="col-span-2 row-span-2">
+                    <img src="images/frame_66_78e421.png" alt="Doll display" class="w-full h-full object-cover rounded-xl hover-scale transition-all">
+                </div>
+                <div>
+                    <img src="images/frame_70_a01795.jpg" alt="Doll detail" class="w-full h-full object-cover rounded-xl hover-scale transition-all">
+                </div>
+                <div>
+                    <img src="images/frame_70_b39dfa.jpg" alt="Doll detail" class="w-full h-full object-cover rounded-xl hover-scale transition-all">
+                </div>
+                <div>
+                    <img src="images/frame_71_a84c11.jpg" alt="Doll detail" class="w-full h-full object-cover rounded-xl hover-scale transition-all">
+                </div>
+                <div class="col-span-2">
+                    <img src="images/frame_71_cd4790.jpg" alt="Doll display" class="w-full h-full object-cover rounded-xl hover-scale transition-all">
+                </div>
+                <div>
+                    <img src="images/frame_70_e65db3.jpg" alt="Doll detail" class="w-full h-full object-cover rounded-xl hover-scale transition-all">
+                </div>
+                <div>
+                    <img src="images/frame_297_cd4790.jpg" alt="Doll detail" class="w-full h-full object-cover rounded-xl hover-scale transition-all">
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-gray-300 text-gray-700 hover:bg-gray-50 rounded-full font-medium transition-all">
+                    <i data-feather="instagram" class="w-4 h-4 mr-2"></i> Instagramをフォロー
+                </a>
+</div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-amber-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="text-amber-700 font-medium mb-2 inline-block">お客様の声</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">コレクターからの感想</h2>
+</div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="images/frame_70_812070.png" alt="Customer" class="w-12 h-12 rounded-full border-2 border-white shadow-sm mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">佐藤家</h4>
+<div class="flex">
+                                <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                            <p class="text-gray-600 italic mb-4">「娘の初節句に購入した御殿飾り雛人形セットは、実物はさらに美しかったです。職人技が素晴らしいです。」</p>
+                            <p class="text-sm text-gray-500">2023年3月</p>
+</div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="images/frame_70_cc37fd.png" alt="Customer" class="w-12 h-12 rounded-full border-2 border-white shadow-sm mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">田中家</h4>
+<div class="flex">
+                                <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                            <p class="text-gray-600 italic mb-4">「何年も雛ハーモニーの人形を収集しています。細部へのこだわりと伝統的な技術が、家族の宝となっています。」</p>
+                            <p class="text-sm text-gray-500">2023年4月</p>
+</div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="images/frame_70_ec43a8.png" alt="Customer" class="w-12 h-12 rounded-full border-2 border-white shadow-sm mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">林家</h4>
+<div class="flex">
+                                <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                                <i data-feather="star" class="text-amber-500 w-4 h-4 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                            <p class="text-gray-600 italic mb-4">「息子の初節句の武者兜飾りは素晴らしかったです。包装とプレゼンテーションが本当に特別な贈り物のように感じさせてくれました。」</p>
+                            <p class="text-sm text-gray-500">2023年5月</p>
+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-amber-50 rounded-3xl overflow-hidden shadow-sm">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 p-8 md:p-12">
+                    <span class="text-amber-700 font-medium mb-2 inline-block">お問い合わせ</span>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">ご連絡</h2>
+                    <p class="text-gray-600 mb-8">人形についてのご質問や注文に関するお手伝いが必要ですか？私たちのチームが喜んでお手伝いします。</p>
+<div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <i data-feather="map-pin" class="text-amber-700 w-5 h-5"></i>
+                                </div>
+                                <div>
+                                <h4 class="font-bold text-gray-800 mb-1">店舗訪問</h4>
+                                <p class="text-gray-600">埼玉県さいたま市岩槻区本町1-3-2</p>
+</div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <i data-feather="phone" class="text-amber-700 w-5 h-5"></i>
+                                </div>
+                                <div>
+                                <h4 class="font-bold text-gray-800 mb-1">お電話</h4>
+                                <p class="text-gray-600">048-758-2008 (9:00-18:00)</p>
+</div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <i data-feather="mail" class="text-amber-700 w-5 h-5"></i>
+                                </div>
+                                <div>
+                                <h4 class="font-bold text-gray-800 mb-1">メール</h4>
+                                <p class="text-gray-600">info@hinaharmony.com</p>
+</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2 bg-white p-8 md:p-12">
+                        <form>
+                            <div class="mb-6">
+                                <label for="name" class="block text-gray-700 font-medium mb-2">お名前</label>
+<input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="email" class="block text-gray-700 font-medium mb-2">メールアドレス</label>
+<input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 font-medium mb-2">メッセージ</label>
+<textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all"></textarea>
+                            </div>
+                            <button type="submit" class="w-full px-6 py-3 bg-amber-700 hover:bg-amber-800 text-white rounded-lg font-medium transition-all">
+                                送信
+                            </button>
+</form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                <img src="images/frame_88_9c13b2.png" alt="HinaHarmony Logo" class="h-10 w-10 rounded-full object-cover mr-3">
+<h3 class="text-xl font-bold">HinaHarmony</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">1952年より日本の人形作りの伝統を守り続けています。</p>
+<div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-all">
+                            <i data-feather="instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-all">
+                            <i data-feather="facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-all">
+                            <i data-feather="twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">ショップ</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">雛人形</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">五月人形</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">羽子板</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">破魔弓</a></li>
+                    </ul>
+</div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">会社情報</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">私たちの物語</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">職人紹介</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">工房見学</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">ブログ</a></li>
+                    </ul>
+</div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">ヘルプ</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">よくある質問</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">配送について</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">返品・交換</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-all">プライバシーポリシー</a></li>
+                    </ul>
+</div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 雛ハーモニー. 無断複写・転載を禁じます。</p>
+<div class="flex space-x-4">
+                <img src="images/frame_82_0f663b.png" alt="支払い方法" class="h-8">
+                <img src="images/frame_83_2e93f0.png" alt="支払い方法" class="h-8">
+                <img src="images/frame_85_3486d9.png" alt="支払い方法" class="h-8">
+                <img src="images/frame_93_081514.jpg" alt="支払い方法" class="h-8">
+</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+        
+        // Initialize Vanta.js
+        VANTA.WAVES({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0xd4a574,
+            shininess: 70.00,
+            waveHeight: 15.00,
+            waveSpeed: 0.50,
+            zoom: 0.75
+        });
+        
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('button[aria-label="menu"]');
+        const mobileNav = document.getElementById('mobile-nav');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (!mobileNav.classList.contains('hidden')) {
+                    mobileNav.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('animated');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on page load
+    </script>
+</body>
+</html>
